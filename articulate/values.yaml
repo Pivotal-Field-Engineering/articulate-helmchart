@@ -41,12 +41,12 @@ ingress:
     ingress.kubernetes.io/rewrite-target: "/"
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: ui.user1.caas.pez.pivotal.io
-      paths: ["/ui/"]
+    - host: ui.articulate.caas.pez.pivotal.io
+      paths: ["/"]
   tls: 
     - secretName: tls
       hosts:
-        - ui.user1.caas.pez.pivotal.io
+        - ui.articulate.caas.pez.pivotal.io
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
