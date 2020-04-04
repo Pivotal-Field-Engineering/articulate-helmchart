@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "pks-demo.fullname" . }}
+  name: {{ include "articulate.fullname" . }}
   labels:
-    {{- include "pks-demo.labels" . | nindent 4 }}
+    {{- include "articulate.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "pks-demo.selectorLabels" . | nindent 6 }}
+      {{- include "articulate.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "pks-demo.selectorLabels" . | nindent 8 }}
+        {{- include "articulate.selectorLabels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "pks-demo.serviceAccountName" . }}
+      serviceAccountName: {{ include "articulate.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
