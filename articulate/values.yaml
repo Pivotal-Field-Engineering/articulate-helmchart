@@ -5,7 +5,7 @@
 replicaCount: 5
 
 image:
-  repository: harbor.caas.pez.pivotal.io/hemanth/pks-demo
+  repository: harbor.caas.pez.pivotal.io/articulate/articulate
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
