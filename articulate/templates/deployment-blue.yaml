@@ -1,7 +1,8 @@
+{{ if .Values.blue.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "articulate.fullname" . }}
+  name: {{ include "articulate.fullname" . }}-blue
   labels:
     {{- include "articulate.labels" . | nindent 4 }}
 spec:
@@ -13,6 +14,7 @@ spec:
     metadata:
       labels:
         {{- include "articulate.selectorLabels" . | nindent 8 }}
+        slot: blue
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -22,11 +24,14 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}-blue
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.articulateVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.blue.articulateVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ENVIRONMENT
+              value: "Blue Environment"
           ports:
             - name: http
               containerPort: 8080
@@ -53,3 +58,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+{{ end }}

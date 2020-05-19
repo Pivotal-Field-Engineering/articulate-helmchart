@@ -66,4 +66,12 @@ tolerations: []
 
 affinity: {}
 
-articulateVersion: 1.1.0
+green:
+  enabled: false
+  articulateVersion: 1.1.0
+
+blue:
+  enabled: false
+  articulateVersion: 1.1.0
+
+productionSlot: blue

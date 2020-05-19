@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "articulate.fullname" . }}
+  name: {{ include "articulate.fullname" . }}-service-prod
   labels:
     {{- include "articulate.labels" . | nindent 4 }}
 spec:
@@ -13,3 +13,4 @@ spec:
       name: http
   selector:
     {{- include "articulate.selectorLabels" . | nindent 4 }}
+    slot: {{ .Values.productionSlot }}
