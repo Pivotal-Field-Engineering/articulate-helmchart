@@ -27,6 +27,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.articulateVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: APP_VERSION
+            value: {{ .Values.articulateVersion }}
           ports:
             - name: http
               containerPort: 8080
