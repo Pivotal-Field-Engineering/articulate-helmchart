@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "articulate.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['articulate-bg-service-stage:{{ .Values.service.port }}']
   restartPolicy: Never
