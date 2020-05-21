@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: harbor.caas.pez.pivotal.io/articulate/articulate
+  repository: harbor.caas.pez.pivotal.io/articulate/articulatebg
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
