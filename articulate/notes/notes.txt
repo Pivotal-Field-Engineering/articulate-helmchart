@@ -1,39 +1,24 @@
-**************************************************************************************************
+------------------------------------------------------------------------------------------------
 Implementation Reference Source
 https://medium.com/@saraswatpuneet/blue-green-deployments-using-helm-charts-93ec479c0282
-**************************************************************************************************
+------------------------------------------------------------------------------------------------
 
 ./articulate/notes/command.sh
 
-**************************************************************************************************
+------------------------------------------------------------------------------------------------
 Deploy Changes
-**************************************************************************************************
-enableSlot=$newSlot.enabled=true
+
 articulateVersion=$newSlot.articulateVersion=1.1.0
-articulateVersion=$newSlot.articulateVersion=1.3.7
 
+articulateVersion=$newSlot.articulateVersion=1.4.1
 helm upgrade test articulate --set $enableSlot --set $articulateVersion --reuse-values
-
-**************************************************************************************************
+------------------------------------------------------------------------------------------------
 Toggle Traffic
-**************************************************************************************************
 
-productionSlot=productionSlot=$newSlot
 helm upgrade test articulate --set $productionSlot --reuse-values
+------------------------------------------------------------------------------------------------
 
 deploymentOption=$oldSlot.enabled=false
 helm upgrade test articulate --set $deploymentOption --reuse-values
 
-**************************************************************************************************
-./articulate/notes/command.sh
-
-currentSlot=`(helm get values --all test | yq r - productionSlot)`
-
-if [ "$currentSlot" == "blue" ];
-then
-  newSlot="green"
-else
-  newSlot="blue"
-fi
-
-echo "newSlot=$newSlot \ncurrentSlot=$currentSlot" | pbcopy
+------------------------------------------------------------------------------------------------

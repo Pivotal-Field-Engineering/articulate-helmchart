@@ -32,6 +32,8 @@ spec:
           env:
             - name: ENVIRONMENT
               value: "Green Environment"
+            - name: APP_VERSION
+              value: articulate-{{ .Values.green.articulateVersion }}    
           ports:
             - name: http
               containerPort: 8080
